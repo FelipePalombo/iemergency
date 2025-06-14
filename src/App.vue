@@ -11,11 +11,22 @@
 <style lang="scss">
 @import "@/assets/style/main.scss";
 
+main {
+    max-width: 500px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: var(--background-color);
+}
+
 .btn {
     border-radius: 40px;
-    padding: 15px 30px;
-    font-size: var(--subtitle-big);
-    border: 3px solid var(--primary-color);
+    padding: 5px 15px;
+    min-width: 130px;
+    font-size: var(--subtitle-medium);
+    border: 2px solid var(--primary-color);
 
     &.primary {
         background-color: var(--primary-color);
@@ -26,6 +37,13 @@
     &.secondary {
         background-color: transparent;
         color: var(--primary-color);
+    }
+
+    &.back-btn {
+        background-image: url('@/assets/images/icons/back-icon-purple.png');
+        background-size: 10px;
+        background-position: 10px center;
+        background-repeat: no-repeat;
     }
 
     &:hover {
@@ -60,6 +78,7 @@ input, textarea {
     border-radius: 10px;
     border: 1px solid var(--border-color);
     background-color: var(--input-color);
+    font-family: var(--font-family);
     font-size: var(--text-big);
     outline: none;
 
@@ -69,7 +88,7 @@ input, textarea {
 }
 
 input::placeholder {
-  opacity: 0.4;
+  opacity: 0.8;
 }
 
 label {

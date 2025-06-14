@@ -6,24 +6,45 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'Welcome',
+      name: 'welcome',
       component: Welcome
     },
     {
       path: '/login',
-      name: 'Login',
+      name: 'login',
       component: () => import('@/views/LoginView.vue')
     },
     {
-      path: '/register',
-      name: 'Register',
-      component: () => import('@/views/RegisterView.vue')
+      path: '/user-data',
+      name: 'user-data',
+      component: () => import('@/views/UserDataView.vue')
     },
     {
       path: '/dashboard',
-      name: 'Dashboard',
+      name: 'dashboard',
       component: () => import('@/views/DashboardView.vue'),
-      
+    },
+    {
+      path: '/new-report/:type',
+      name: 'new-report',
+      component: () => import('@/views/NewReportView.vue'),
+      props: true
+    },
+    {
+      path: '/reports',
+      name: 'reports',
+      component: () => import('@/views/ReportsView.vue')
+    },
+    {
+      path: '/report/:id',
+      name: 'report',
+      component: () => import('@/views/ReportView.vue'),
+      props: true
+    },
+    {
+      path: '/emergency',
+      name: 'emergency',
+      component: () => import('@/views/EmergencyView.vue')
     }
   ]
 })

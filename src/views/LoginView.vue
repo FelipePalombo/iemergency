@@ -2,23 +2,21 @@
   <section class="login">
     <div class="gradient"></div>
     <div class="header">
-      <div class="back-btn">
-        <button class="" @click="$router.push('/')">Voltar</button>
-      </div>
       <h2>Entrar</h2>
     </div>
     <div class="form-login">
-      <form>
+      <form @submit.prevent="login">
         <div class="input-group">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Digite seu email" required>
+          <input type="email" id="email" placeholder="Digite seu email" v-model="email" required>
         </div>
         <div class="input-group">
           <label for="password">Senha</label>
-          <input type="password" id="password" placeholder="Digite sua senha" required>
+          <input type="password" id="password" placeholder="Digite sua senha" v-model="password" required>
         </div>
         <div class="btn-flex">
-          <button type="submit" class="btn primary" @click="$router.push('/dashboard')">Entrar</button>
+          <button type="submit" class="btn primary">Entrar</button>
+          <button class="btn secondary back-btn" @click.prevent="$router.go(-1)">Voltar</button>
         </div>
       </form>
     </div>
@@ -26,53 +24,58 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+import { useUserStore } from '@/stores/UserStore';
+import { useRouter } from 'vue-router';
 
+const userStore = useUserStore();
+const router = useRouter();
+
+const email = ref('');
+const password = ref('');
+
+const login = () => {
+  if (email.value && password.value) {
+    userStore.login(email.value, password.value);
+  } else {
+    alert('Por favor, preencha todos os campos.');
+  }
+}
+
+onMounted(() => {
+  if (userStore.logged) {
+    router.push('/dashboard')
+  }
+})
 </script>
 
 <style lang="scss" scoped>
 .login {
-
   .gradient {
     background: var(--primary-gradient-color);
     position: absolute;
     top: 0;
     left: 50%;
     transform: translate(-50%, 0%);
-    width: 600px;
-    height: 20vh;
-    border-radius: 0% 0 140px 140px;
+    width: var(--gradient-border-width);
+    height: 17vh;
+    border-radius: var(--gradient-border-radius);
+    box-shadow: 0px 0px 14px 7px var(--shadow-color);
   }
 
   .header {
-    padding: 70px var(--side);   
+    padding: 50px var(--side);   
     padding-bottom: 0;  
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 20vh;
+    height: 17vh;
     z-index: 1;
     position: relative;
     justify-content: center;
 
     h2 {
       color: var(--text-color);
-    }
-
-    .back-btn {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-
-      button {
-        background-image: url('@/assets/images/icons/back-icon.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: left center;
-        background-size: 12px;
-        padding-left: 20px;
-        color: var(--text-color);
-        font-size: var(--subtitle-medium);
-      }
     }
   }
 
@@ -84,7 +87,6 @@
     justify-content: center;
     height: 60vh;
     z-index: 1;
-    position: relative;
 
     form {
       width: 100%;
@@ -92,7 +94,8 @@
 
       .btn-flex {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        flex-direction: row-reverse;
       }
     }
   }

@@ -6,7 +6,7 @@
 :root {
         /* colors  */
     --primary-gradient-color: linear-gradient(180deg, #9e61e1 10%, #8286cc 90%);
-    --emergency-gradient-color: linear-gradient(180deg, #ed3b4b 10%, #6a3b84 90%);
+    --emergency-gradient-color: linear-gradient(180deg, #6a3b84 -25%, #ed3b4b 100%);
     --report-gradient-color: linear-gradient(180deg, #53b4e8 10%, #4ac4ee 90%);
     --primary-color: #6200ee;
     /* --secondary-color: #f5b4b0; */
@@ -20,16 +20,17 @@
     --error-color: #fd003a;
     --emergency-color: #EF3B49;
     --bg-emergency-color: #ecd6da;
+    --emergency-text-color: #B12D2D;
     --report-color: #4CBFEC;
     --btn-report-color: #2f8cbc;
     --light-color: #FAF9F5;
     --white-color: #ffffff;
     --input-color: #ececec;
-    --border-color: #e0e0e0;
+    --border-color: #c7c7c7;
     --border-color-focus: #6300ee91;
     --shadow-color: #66666636;
     --dark-color: #434343;
-    --gray-color: #00000071;
+    --gray-color: #0000009f;
 
     --shadow: 0px 0px 14px 0px var(--shadow-color);
 
@@ -55,9 +56,10 @@
 
     --section: 55px;
     --side: 30px;
+    --gradient-border-width: 115%;
 
     --transition: all 0.3s;
-    --border-radius: 5px;
+    --gradient-border-radius: 0% 0 95px 95px;
 }
 
 * {
@@ -163,12 +165,5 @@ button {
 }
 
 #app {
-    max-width: 500px;
-    background-color: var(--background-color);
-    height: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
+    
 }
