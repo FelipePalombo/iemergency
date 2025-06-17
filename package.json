@@ -1,6 +1,6 @@
 {
-  "name": "iemergency-webapp",
-  "version": "0.0.0",
+  "name": "iemergency",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
